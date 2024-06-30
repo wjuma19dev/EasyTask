@@ -1,18 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { headerComponent } from './header.component';
+import { Component } from '@angular/core';
+import { UserComponent } from './user/user.component';
+import { headerComponent } from './header/header.component';
+import { DUMMY_USERS } from './dummy-users';
+import { TasksComponent } from './tasks/tasks.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [headerComponent],
+  imports: [headerComponent, UserComponent, TasksComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+  users = DUMMY_USERS;
+  selectedUserId: string = 'u1';
+
   title = 'essentials-components';
 
-  constructor() {}
+  get getSelectedUser() {
+    return this.users.find((user) => user.id === this.selectedUserId)!;
+  }
 
-  ngOnInit(): void {}
+  onUserSelected(id: string) {
+    this.selectedUserId = id;
+  }
 }

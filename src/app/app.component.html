@@ -1,2 +1,18 @@
 <app-header></app-header>
-<h3>{{ title }}</h3>
+<main>
+  <ul id="users">
+    <li>
+      <app-user [user]="users[0]" (userSelected)="onUserSelected($event)"></app-user>
+    </li>
+    <li>
+      <app-user [user]="users[1]" (userSelected)="onUserSelected($event)"></app-user>
+    </li>
+    <li>
+      <app-user [user]="users[2]" (userSelected)="onUserSelected($event)"></app-user>
+    </li>
+    <li>
+      <app-user [user]="users[3]" (userSelected)="onUserSelected($event)"></app-user>
+    </li>
+  </ul>
+  <app-tasks [name]="getSelectedUser.name" />
+</main>
