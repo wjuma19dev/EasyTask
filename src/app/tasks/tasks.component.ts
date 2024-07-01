@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TaskComponent } from './task/task.component';
-import { type Task } from './tasks.model';
+import { type NewTaskData, type Task } from './tasks.model';
 import { NewTaskComponent } from './new-task/new-task.component';
 
 @Component({
@@ -52,17 +52,13 @@ export class TasksComponent implements OnInit {
     this.isAddingTask = false;
   }
 
-  onAddTaskEvent(newTask: {
-    title: string;
-    summary: string;
-    timestamp: string;
-  }) {
+  onAddTaskEvent(newTask: NewTaskData) {
     const task = {
       ...newTask,
-      id: `t${this.tasks.length + 1}`,
+      id: new Date().getTime().toString(),
       userId: this.userId,
     };
-    this.tasks.push(task);
+    this.tasks.unshift(task);
     this.isAddingTask = false;
   }
 }
