@@ -1,10 +1,11 @@
 import { Component, Input, output } from '@angular/core';
 import { type Task } from '../tasks.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css',
 })
